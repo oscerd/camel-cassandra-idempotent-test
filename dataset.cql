@@ -1,0 +1,13 @@
+CREATE KEYSPACE test WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 1}; 
+USE test; 
+CREATE TABLE NAMED_CAMEL_IDEMPOTENT (
+  NAME varchar,
+  KEY varchar,
+  PRIMARY KEY (NAME, KEY)
+);
+INSERT INTO NAMED_CAMEL_IDEMPOTENT(NAME, KEY)
+    VALUES('ID','Add_Exists');
+INSERT INTO NAMED_CAMEL_IDEMPOTENT(NAME, KEY)
+    VALUES('ID','Contains_Exists');
+INSERT INTO NAMED_CAMEL_IDEMPOTENT(NAME, KEY)
+    VALUES('ID','Remove_Exists');
